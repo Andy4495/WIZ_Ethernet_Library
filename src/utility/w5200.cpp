@@ -15,7 +15,8 @@
 // W5200 controller instance
 W5200Class W5100;
 
-#define SPI_CS 10
+#define SPI_CS 8
+#define ARDUINO_ARCH_AVR
 
 #define TX_RX_MAX_BUF_SIZE 2048
 #define TX_BUF 0x1100
@@ -32,6 +33,7 @@ void W5200Class::init(void)
 #if defined(ARDUINO_ARCH_AVR)
   SPI.begin();
   initSS();
+  SPI.setClockDivider(SPI_CLOCK_DIV8);
 #else
   SPI.begin(SPI_CS);
   // Set clock to 4Mhz (W5100 should support up to about 14Mhz)
@@ -255,4 +257,5 @@ void W5200Class::execCmdSn(SOCKET s, SockCMD _cmd) {
   while (readSnCR(s))
     ;
 }
+#undef ARDUINO_ARCH_AVR
 #endif

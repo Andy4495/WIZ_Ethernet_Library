@@ -10,22 +10,21 @@
 #ifndef	W5100_H_INCLUDED
 #define	W5100_H_INCLUDED
 
-#include <avr/pgmspace.h>
 #include <SPI.h>
 
 typedef uint8_t SOCKET;
 
 //#define W5100_ETHERNET_SHIELD // Arduino Ethenret Shield and Compatibles ...
-//#define W5200_ETHERNET_SHIELD // WIZ820io, W5200 Ethernet Shield 
-#define W5500_ETHERNET_SHIELD   // WIZ550io, ioShield series of WIZnet
+#define W5200_ETHERNET_SHIELD // WIZ820io, W5200 Ethernet Shield 
+//#define W5500_ETHERNET_SHIELD   // WIZ550io, ioShield series of WIZnet
 
 #if defined(W5500_ETHERNET_SHIELD)
 //#define WIZ550io_WITH_MACADDRESS // Use assigned MAC address of WIZ550io
-#include "w5500.h"
+#include "utility/w5500.h"
 #endif
 
 #if defined(W5200_ETHERNET_SHIELD)
-#include "w5200.h"
+#include "utility/w5200.h"
 #endif
 
 #if defined(W5100_ETHERNET_SHIELD)
@@ -152,7 +151,7 @@ public:
    * the data from Receive buffer. Here also take care of the condition while it exceed
    * the Rx memory uper-bound of socket.
    */
-  void read_data(SOCKET s, volatile uint8_t * src, volatile uint8_t * dst, uint16_t len);
+  void read_data(SOCKET s, volatile uint16_t src, volatile uint8_t * dst, uint16_t len);
   
   /**
    * @brief	 This function is being called by send() and sendto() function also. 
@@ -337,7 +336,7 @@ private:
   uint16_t RBASE[SOCKETS]; // Rx buffer base address
 
 private:
-    
+#if defined(ARDUINO_ARCH_AVR) || defined(ESP8266) 
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1284P__)
   inline static void initSS()    { DDRB  |=  _BV(4); };
   inline static void setSS()     { PORTB &= ~_BV(4); };
@@ -355,12 +354,18 @@ private:
                                    digitalWrite(SS, HIGH); };
   inline static void setSS()     { digitalWrite(SS, LOW); };
   inline static void resetSS()   { digitalWrite(SS, HIGH); };
+#elif defined(ESP8266)
+  inline static void initSS()    { pinMode(SS, OUTPUT); };
+  inline static void setSS()     { GPOC = digitalPinToBitMask(SS); };
+  inline static void resetSS()   { GPOS = digitalPinToBitMask(SS); };  
 #else
   inline static void initSS()    { DDRB  |=  _BV(2); };
   inline static void setSS()     { PORTB &= ~_BV(2); };
   inline static void resetSS()   { PORTB |=  _BV(2); };
 #endif
 
+
+#endif // ARDUINO_ARCH_AVR
 };
 
 extern W5100Class W5100;

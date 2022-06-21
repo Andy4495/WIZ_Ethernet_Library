@@ -19,6 +19,7 @@ private:
   IPAddress _dnsServerAddress;
   DhcpClass* _dhcp;
 public:
+  EthernetClass();
   static uint8_t _state[MAX_SOCK_NUM];
   static uint16_t _server_port[MAX_SOCK_NUM];
 
