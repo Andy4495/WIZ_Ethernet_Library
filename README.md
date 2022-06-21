@@ -103,6 +103,8 @@ This README.md file has been changed to add this *Special Note* section and to r
   }
   ```
 
+* Added file `Udp.h` from the standard Arduino Ethernet library.
+
 [Wiznet]: https://github.com/Wiznet/WIZ_Ethernet_Library
 [Libspec]: https://arduino.github.io/arduino-cli/0.19/library-specification/
 [Lint]: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
