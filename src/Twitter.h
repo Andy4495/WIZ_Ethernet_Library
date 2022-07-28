@@ -18,7 +18,7 @@
 #if defined(ARDUINO) && ARDUINO > 18   // Arduino 0019 or later
 #include <SPI.h>
 #endif
-#include <Ethernet.h>
+#include <WIZ-Ethernet.h>
 #if defined(ARDUINO) && ARDUINO < 100  // earlier than Arduino 1.0
 #include <EthernetDNS.h>
 #endif

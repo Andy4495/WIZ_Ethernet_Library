@@ -2,7 +2,7 @@
 
 ## Special Note
 
-This is a fork of the [WIZnet Ethernet library][Wiznet]. With the exception listed below in Code Changes, no code has been changed from the upstream library. However, the directory structure has been changed in order to conform to the [Arduino Library Specification][Libspec].
+This is a fork of the [WIZnet Ethernet library][Wiznet]. The code has been changed from the upstream library as listed below. Also, the directory structure has been changed in order to conform to the [Arduino Library Specification][Libspec].
 
 This README.md file has been changed to add this *Special Note* section and to resolve issues flagged by *[markdownlint][Lint]*.
 
@@ -104,6 +104,18 @@ This README.md file has been changed to add this *Special Note* section and to r
   ```
 
 * Added file `Udp.h` from the standard Arduino Ethernet library.
+* Filename changes to avoid ambiguity with built-in Ethernet library:
+  * `Ethernet.cpp` -> `WIZ-Ethernet.cpp`
+  * `Ethernet.h` -> `WIZ-Ethernet.h`
+  * `EthernetClient.cpp` -> `WIZ-EthernetClient.cpp`
+  * `EthernetClient.h` -> `WIZ-EthernetClient.h`
+* Updated `#include` directives to use new file names:
+  * EthernetServer.cpp
+  * EthernetUdp.cpp
+  * Twitter.h
+  * WIZ-Ethernet.cpp
+  * WIZ-Ethernet.h
+  * WIZ-EthernetClient.cpp
 
 [Wiznet]: https://github.com/Wiznet/WIZ_Ethernet_Library
 [Libspec]: https://arduino.github.io/arduino-cli/0.19/library-specification/

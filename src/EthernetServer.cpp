@@ -4,8 +4,8 @@ extern "C" {
 #include "string.h"
 }
 
-#include "Ethernet.h"
-#include "EthernetClient.h"
+#include "WIZ-Ethernet.h"
+#include "WIZ-EthernetClient.h"
 #include "EthernetServer.h"
 
 EthernetServer::EthernetServer(uint16_t port)

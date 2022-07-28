@@ -28,7 +28,7 @@
 
 #include "utility/w5100.h"
 #include "utility/socket.h"
-#include "Ethernet.h"
+#include "WIZ-Ethernet.h"
 #include "Udp.h"
 #include "Dns.h"
 
