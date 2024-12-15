@@ -110,12 +110,12 @@ This README.md file has been changed to add this *Special Note* section and to r
   * `EthernetClient.cpp` -> `WIZ-EthernetClient.cpp`
   * `EthernetClient.h` -> `WIZ-EthernetClient.h`
 * Updated `#include` directives to use new file names:
-  * EthernetServer.cpp
-  * EthernetUdp.cpp
-  * Twitter.h
-  * WIZ-Ethernet.cpp
-  * WIZ-Ethernet.h
-  * WIZ-EthernetClient.cpp
+  * `EthernetServer.cpp`
+  * `EthernetUdp.cpp`
+  * `WIZ-Ethernet.cpp`
+  * `WIZ-Ethernet.h`
+  * `WIZ-EthernetClient.cpp`
+* Deleted files `Twitter.h` and `Twitter.cpp`, since there were not used for my application and had an imcompatiblity with the GCC9.6 compiler due to `println()` method
 
 [Wiznet]: https://github.com/Wiznet/WIZ_Ethernet_Library
 [Libspec]: https://arduino.github.io/arduino-cli/0.19/library-specification/
